@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chat_messages",
+  "info": {
+    "singularName": "chat-message",
+    "pluralName": "chat-messages",
+    "displayName": "Chat Message",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "sender"
+    },
+    "messages": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::chat-session.chat-session",
+      "inversedBy": "chat_messages"
+    },
+    "isServerMessage": {
+      "type": "boolean"
+    }
+  }
+}
